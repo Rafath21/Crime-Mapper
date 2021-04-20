@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    <title>Crime mappper</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="title">
+        <h2>CRIME MAPPER</h2>
+      </div>
+      <div class="search-container">
+        <div class="search">
+          <input
+            class="search-input"
+            type="text"
+            placeholder="Enter the district"
+          />
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+      <div class="statistics">
+        <a href="statistics.html">Statistics</a>
+      </div>
+      <div id="map"></div>
+      <div class="sidebar">
+        <canvas id="bar-chart" width="800" height="450"></canvas>
+        <div class="quote-container">
+          <div id="quote"></div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./stats.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
