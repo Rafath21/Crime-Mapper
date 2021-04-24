@@ -1,4 +1,4 @@
-const myMap = L.map('map').setView([18.1124,79.0193], 7.2);
+const myMap = L.map('map').setView([18.1124,79.0193], 10);
 const tileUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 const attribution= '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 const tiles= L.tileLayer(tileUrl,{attribution,maxZoom:9,minZoom:7});
@@ -19,6 +19,7 @@ const quotes=["Rape is the only crime in which the victim becomes the accused.\n
               'Disgrace does not consist in the punishment, but in the crime.-VITTORIO ALFIERI'];
 
 window.onload=function(){
+  search.value="";
   let index=Math.floor(Math.random()*quotes.length);
 let div=document.querySelector('#quote');
 let quote=`<div class="card">
@@ -72,7 +73,7 @@ function loadMap(cities){
 
 function getcoords(e){
     var coord=e.latlng.toString().split(',');
-    console.log(coord);
+    console.log(coord); 
     var latt=coord[0].split('(');
     var longg=coord[1].split(')');
     var lat=latt[1];
@@ -91,12 +92,13 @@ function getCrimes(lat,long){
 }
 
 function createMarkers(lat,long,district){
-          search.textContent="";
-          console.log(district.properties.murders);
+          search.value="";
+          console.log(district.properties.Thefts);
         let customPopup=`<div class="container-5 width:250px">
-                    <h4>${district.properties.name}</h4>
-                    <img src='./images/3.svg' width='15px'/>&#160&#160<h4 style="display:inline-block;font-weight:bold;"> 
-                    Riotings: ${district.properties.Riotings}</h4><br>
+                    <h4><b>${(district.properties.name).toUpperCase()}</b></h4>
+                    <hr>
+                    <img src='./images/2.svg' width='15px'/>&#160&#160<h4 style="display:inline-block;font-weight:bold;"> 
+                    Riotings:${district.properties.Riotings}</h4><br>
                     <img src='./images/12.svg' width='15px'/>&#160&#160<h4 style="display:inline-block;"> 
                     Thefts: ${district.properties.Thefts}</h4><br>
                     <img src='./images/20.png' width='15px'/>&#160&#160<h4 style="display:inline-block;"> 
@@ -115,7 +117,7 @@ function createMarkers(lat,long,district){
 
 
 function generateCharts(district){
-    console.log(district.properties.murders);
+    console.log(district.properties.Thefts);
     new Chart(document.getElementById("bar-chart"), {
     type: 'bar',
     data: {
@@ -167,7 +169,7 @@ function findlocation(){
         if(cities[i].properties.name.toUpperCase()==toSearch.toUpperCase()){
             var lathere=cities[i].geometry.coordinates[1];
             var longhere=cities[i].geometry.coordinates[0];
-            myMap.flyTo([parseInt(lathere), parseInt(longhere)],7, {
+            myMap.flyTo([parseInt(lathere), parseInt(longhere)],9, {
             duration: 3
     });
             createMarkers(lathere,longhere,cities[i]);
